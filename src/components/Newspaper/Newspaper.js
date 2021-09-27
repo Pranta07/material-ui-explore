@@ -14,20 +14,23 @@ const Newspaper = () => {
     }, []);
     return (
         <div>
-            <CircularProgress color="secondary" />
-            <Box sx={{ flexGrow: 1 }}>
-                <Grid
-                    container
-                    rowSpacing={3}
-                    columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-                >
-                    {articles.map((article) => (
-                        <Grid item xs={6} sm={6} md={3}>
-                            <News news={article}></News>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Box>
+            {articles.length === 0 ? (
+                <CircularProgress color="secondary" />
+            ) : (
+                <Box sx={{ flexGrow: 1 }}>
+                    <Grid
+                        container
+                        rowSpacing={3}
+                        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                    >
+                        {articles.map((article) => (
+                            <Grid item xs={6} sm={6} md={3}>
+                                <News news={article}></News>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
+            )}
         </div>
     );
 };
